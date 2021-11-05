@@ -1,0 +1,8 @@
+.nav__active_link {
+  color: orangered !important;
+}
+.web_upload__form {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}

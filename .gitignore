@@ -1,0 +1,11 @@
+.idea/
+__pycache__/
+bin/
+.DS_Store
+config.ini
+/staticfiles
+*.log
+.vscode/
+/media
+.env
+migrations/
