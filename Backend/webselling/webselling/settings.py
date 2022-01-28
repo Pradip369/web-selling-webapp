@@ -23,7 +23,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'sellingapp',
-    'corsheaders'
+    'corsheaders',
+    # 'storages'
 ]
 
 MIDDLEWARE = [
@@ -45,7 +46,7 @@ ROOT_URLCONF = 'webselling.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -164,25 +165,40 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_SALT' : os.getenv("AUTH_COOKIE_SALT")
 }
 
-# ====================================== Media File Settings =========================
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+if DEBUG:
+    # ====================================== Media File Settings =========================
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# ===================================== Static File Settings ==============================
-STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles'),]
+    # ===================================== Static File Settings ==============================
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# AWS_LOCATION = 'static'
+
+# AWS_ACCESS_KEY_ID = (os.getenv("AWS_ACCESS_KEY_ID"))
+# AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+# AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+
+# AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {    
+#     'CacheControl': 'max-age=86400',
+# }
+# DEFAULT_FILE_STORAGE = 'webselling.storage_backends.MediaStorage'
+# STATICFILES_STORAGE = "webselling.storage_backends.StaticStorage"
+# STATIC_URL='https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+# STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder',
+# 'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
+# AWS_DEFAULT_ACL = None
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build','static'),
+]
 
 # ===================================== corsheader settings ==================================
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:8000"
-]
-CSRF_TRUSTED_ORIGINS = [
-    'localhost:3000',
-    'localhost:8000',
-    '127.0.0.1:8000'
-]
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 CORS_ALLOW_CREDENTIALS = True
 

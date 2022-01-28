@@ -16,7 +16,7 @@ class LoginSerializer(serializers.Serializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required = True,validators=[UniqueValidator(queryset=User.objects.all())])
-    password = serializers.CharField(required=True,validators=[validate_password])
+    password = serializers.CharField(required=True,validators=[validate_password],write_only = True)
 
     class Meta:
         model = User

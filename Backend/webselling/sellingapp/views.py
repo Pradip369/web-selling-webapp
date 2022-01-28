@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.conf import settings
 from rest_framework import status,serializers,viewsets
-from rest_framework.decorators import api_view, permission_classes, throttle_classes
+from rest_framework.decorators import api_view, permission_classes, throttle_classes,authentication_classes
 from rest_framework.filters import OrderingFilter,SearchFilter
 from rest_framework.exceptions import PermissionDenied        
 from django.utils import timezone

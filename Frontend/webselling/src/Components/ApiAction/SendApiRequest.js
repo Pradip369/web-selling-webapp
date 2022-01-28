@@ -76,11 +76,10 @@ export const logout_user = () => {
 export const auth_check = (dispatch, setVerifyAuth) => {
     Axios.put(USER_AUTH_LOGOUT)
         .then(res => {
-            (res.status !== 204) && dispatch({ type: 'AUTH_SUCCESS', payload: res.data })
+            (res.status === 200) && dispatch({ type: 'AUTH_SUCCESS', payload: res.data })
             setVerifyAuth(true);
         })
         .catch(e => {
-            console.log(e.response);
             setVerifyAuth(true);
             try {
                 if (e.response.status !== 401) {
@@ -89,6 +88,9 @@ export const auth_check = (dispatch, setVerifyAuth) => {
                         position: toast.POSITION.TOP_CENTER
                     });
                     logout_user()  // Hard Log-Out
+                }
+                else {
+                    console.log("Token Missmatch")
                 }
                 if (e.response.status === 403 & e.response.statusText === "Forbidden") {
                     logout_user()  // Hard Log-Out

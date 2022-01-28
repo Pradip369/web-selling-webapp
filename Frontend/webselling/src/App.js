@@ -35,7 +35,7 @@ const App = () => {
       }
     }
     check();
-    // //eslint-disable-next-line
+    //eslint-disable-next-line
   }, [])
 
   return (

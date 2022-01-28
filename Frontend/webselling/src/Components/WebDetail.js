@@ -80,10 +80,10 @@ const WebDetail = (props) => {
                         </Paper>
                     </div>
                     <div className='col-md-5 mb-3'>
-                        <center>
-                            <strong>Image or Video</strong>
-                        </center>
                         <Paper elevation={3}>
+                            <center className='py-3'>
+                                <strong>Image</strong>
+                            </center>
                             <CardMedia
                                 component="img"
                                 image={data?.website_image}
@@ -94,6 +94,9 @@ const WebDetail = (props) => {
                         </Paper>
                         {data?.short_video &&
                             <Paper elevation={3} className='my-2'>
+                                <center className='py-3'>
+                                    <strong>Video</strong>
+                                </center>
                                 <CardMedia
                                     component="video"
                                     image={data?.short_video}
