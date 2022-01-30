@@ -1,4 +1,4 @@
-const MAIN_URL = 'http://localhost:8000'
+const MAIN_URL = 'http://3.110.105.28'
 
 export const USER_AUTH_LOGOUT = `${MAIN_URL}/web_selling/manage_auth/`
 
